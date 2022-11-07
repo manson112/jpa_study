@@ -4,15 +4,23 @@
         <class>mansno112.github.study.jpa.start.Member</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
-            <property name="javax.persistence.jdbc.user" value=""/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/workspace/jpa/jpatest"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <!-- create, create-drop, update, validate, none(유효하지않은 값) -->
+
+            <property name="hibernate.physical_naming_strategy" value="org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy"/>
+<!--            <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy" />-->
+            <!-- 자바의 CamelCase를 Underscore 표기법으로 매핑한다 / hibernate 5 부터 변경됨 -->
 
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
             <property name="hibernate.id.new_generator_mappings" value="true"/>
+            <!-- springboot 2.0 부터는 true로 자동 세팅 -->
         </properties>
         
     </persistence-unit>

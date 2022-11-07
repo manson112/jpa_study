@@ -104,8 +104,98 @@ public class ApplicationTest {
 
       - 영속성 컨텍스트를 flush 하는 방법
         1. em.flush() 를 직접 호출
+            - 메소드를 직접 호출해서 영속성 컨텍스트를 강제로 플러시한다.
+            - 테스트나 다른 프레임워크와 JPA 를 함께 사용할 때를 제외하고 거의 사용하지 않는다.
         2. 트랜잭션 커밋 시 플러시가 자동 호출된다.
+            - 트랜색션을 커밋하기 전에 꼭 플러시를 호출해서 영속성 컨텍스트의 변경 내용을 데이터베이스에 반영해야한다.
+            - JPA 는 이런 문제를 예방하기 위해 트랜잭션을 커밋할 때 플러시를 자동으로 호출한다.
         3. JPQL 쿼리 실행 시 플러시가 자동 호출된다.
+            - JPQL 이나 Criteria 같은 객체지향 쿼리를 호출할 때도 플러시가 실행된다.
 
+       플러시를 한다고 해서 영속성 컨텍스트에 보관된 엔티티를 지우는 것이 아니라 변경 내용을 데이터베이스에 동기화한다.
      */
+
+
+    public void detachTest() {
+        /*
+        영속성 컨텍스트가 관리하는 영속 상태의 엔티티가 영속성 컨텍스트에서 분리된 것을 준영속 상태라고 한다.
+        따라서 준영속 상태의 엔티티는 영속성 컨텍스트가 제공하는 기능을 사용할 수 없다.
+
+        1. em.detach(entity)
+            - 특정 엔티티만 준영속 상태로 전환한다.
+        2. em.clear()
+            - 영속성 컨텍스트를 완전히 초기화한다.
+            - 해당 영속성 컨텍스트의 모든 엔티티를 준영속 상태로 만든다.
+        3. em.close()
+            - 영속성 컨텍스트를 종료한다.
+
+         - 준영속 상태의 특징
+            - 거의 비영속 상태에 가깝다 = 영속성 컨텍스트가 제공하는 어떤 기능도 동작하지 않는다.
+            - 식별자 값을 가지고 있다 = 비영속 상태에서는 식별자 값이 없을 수 있지만 준영속 상태에서는 반드시 식별자 값을 가지고 있다.
+            - 지연 로딩을 할 수 없다
+         */
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpatest");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+
+            Member member = new Member();
+            member.setId("memberA");
+            member.setUsername("회원A");
+
+            // 영속 상태
+            em.persist(member);
+
+            // 준영속 상태
+            // 1차 캐시부터 쓰기 지연 SQL 저장소까지 모든 정보 제거
+            em.detach(member);
+
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
+        emf.close();
+    }
+
+    public void merge() {
+        /*
+        준영속 상태의 엔티티를 다시 영속 상태로 변경하려면 병합을 사용하면 된다.
+        merge() 메소드는 준영속 상태의 엔티티를 받아서 그 정보로 새로운 영속 상태의 엔티티를 반환한다.
+
+        비영속 상태의 엔티티도 영속 상태로 만들 수 있다.
+
+         */
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpatest");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        tx.begin();
+
+        Member member = new Member();
+        member.setId("memberA");
+        member.setUsername("회원A");
+        // 영속 상태
+        em.persist(member);
+
+        // 준영속 상태
+        em.detach(member);
+
+        member.setUsername("회원1");
+
+        Member merged = em.merge(member);
+
+        em.contains(member); // false
+        em.contains(merged); // true
+
+        tx.commit();
+
+        em.close();
+
+
+
+    }
 }

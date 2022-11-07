@@ -18,6 +18,8 @@ spring:
         id:
           new_generator_mapping: true
         dialect: org.hibernate.dialect.H2Dialect
+        hbm2ddl:
+          auto: create
 
 logging:
   level:
