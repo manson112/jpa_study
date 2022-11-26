@@ -9,11 +9,11 @@ import java.util.Date;
 
 @Getter
 @Setter
-@Entity
-@Table(name = "MEMBER", uniqueConstraints = { @UniqueConstraint(
-        name = "NAME_AGE_UNIQUE",
-        columnNames = {"NAME", "AGE"}
-)})
+//@Entity
+//@Table(name = "MEMBER", uniqueConstraints = { @UniqueConstraint(
+//        name = "NAME_AGE_UNIQUE",
+//        columnNames = {"NAME", "AGE"}
+//)})
 public class Member {
 
     // 영속성 컨텍스트는 엔티티를 식별자 값(@Id)으로 구분하므로 영속상태는 식별자 값이 반드시 있어야 한다.
