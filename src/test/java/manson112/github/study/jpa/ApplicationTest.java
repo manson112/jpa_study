@@ -1,8 +1,7 @@
-package mansno112.github.study.jpa;
+package manson112.github.study.jpa;
 
-import mansno112.github.study.jpa.start.Member;
+import manson112.github.study.jpa.start.Member;
 import org.junit.jupiter.api.Test;
-import org.springframework.orm.jpa.EntityManagerFactoryUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -48,6 +47,7 @@ public class ApplicationTest {
         member.setId(id);
         member.setUsername("지한");
         member.setAge(2);
+
 
 
         // 영속성 컨텍스트 (persistence context): 엔티티를 영구 저장하는 환경

@@ -1,4 +1,4 @@
-package mansno112.github.study.jpa;
+package manson112.github.study.jpa;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

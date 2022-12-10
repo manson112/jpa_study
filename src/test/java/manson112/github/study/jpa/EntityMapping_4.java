@@ -1,4 +1,4 @@
-package mansno112.github.study.jpa;
+package manson112.github.study.jpa;
 
 
 public class EntityMapping_4 {

@@ -1,4 +1,4 @@
-package mansno112.github.study.jpa.shop;
+package manson112.github.study.jpa.shop.model.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "MEMBER")
-public class Member {
+public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue

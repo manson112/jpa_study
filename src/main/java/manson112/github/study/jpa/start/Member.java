@@ -1,4 +1,4 @@
-package mansno112.github.study.jpa.start;
+package manson112.github.study.jpa.start;
 
 
 import lombok.Getter;

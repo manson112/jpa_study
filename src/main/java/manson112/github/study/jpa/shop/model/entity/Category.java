@@ -1,7 +1,8 @@
-package mansno112.github.study.jpa.shop;
+package manson112.github.study.jpa.shop.model.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import manson112.github.study.jpa.shop.model.entity.item.Item;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Category {
+public class Category extends BaseEntity {
     @Id @GeneratedValue
     @Column(name = "CATEGORY_ID")
     private Long id;

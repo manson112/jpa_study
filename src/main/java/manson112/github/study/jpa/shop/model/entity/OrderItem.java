@@ -1,17 +1,16 @@
-package mansno112.github.study.jpa.shop;
+package manson112.github.study.jpa.shop.model.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import manson112.github.study.jpa.shop.model.entity.item.Item;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "ORDER_ITEM")
 @Getter
 @Setter
-public class OrderItem {
+public class OrderItem extends BaseEntity {
 
     @Id @GeneratedValue
     @Column(name = "ORDER_ITEM_ID")

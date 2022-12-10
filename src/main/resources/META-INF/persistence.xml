@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
     <persistence-unit name="jpatest">
-        <class>mansno112.github.study.jpa.start.Member</class>
+<!--        <class>manson112.github.study.jpa.start.Member</class>-->
+        <class>manson112.github.study.jpa.shop.model.entity.Member</class>
+        <class>manson112.github.study.jpa.shop.model.entity.Order</class>
+        <class>manson112.github.study.jpa.shop.model.entity.OrderItem</class>
+        <class>manson112.github.study.jpa.shop.model.entity.Delivery</class>
+        <class>manson112.github.study.jpa.shop.model.entity.Category</class>
+        <class>manson112.github.study.jpa.shop.model.entity.item.Item</class>
+        <class>manson112.github.study.jpa.shop.model.entity.item.Movie</class>
+        <class>manson112.github.study.jpa.shop.model.entity.item.Album</class>
+        <class>manson112.github.study.jpa.shop.model.entity.item.Book</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>

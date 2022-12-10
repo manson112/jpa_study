@@ -274,7 +274,7 @@ org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The
 	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:56)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at mansno112.github.study.jpa.ApplicationTest.test01(ApplicationTest.java:16)
+	at manson112.github.study.jpa.ApplicationTest.test01(ApplicationTest.java:16)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
